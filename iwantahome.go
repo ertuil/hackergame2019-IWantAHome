@@ -299,7 +299,15 @@ func CheckSleep() error {
 
 	inputs := strings.Split(input," ")
 	t1 := time.Now()
-	cmd := exec.Command(inputs[0],inputs[1:]...)
+
+	var cmd *exec.Cmd
+	if len(inputs) < 0 {
+		return errors.New("empty command")
+	} else if len(inputs) == 1 {
+		cmd = exec.Command(inputs[0])
+	} else {
+		cmd = exec.Command(inputs[0],inputs[1:]...)
+	}
 	err = cmd.Run()
 	if err != nil {
 		return errors.New(fmt.Sprintf("Command error:%v",err))
