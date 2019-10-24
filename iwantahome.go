@@ -30,6 +30,7 @@ var (
 )
 
 func main() {
+	fmt.Println("警告，做这道题的时候，如果方法不对，可能对操作系统造成严重危害。请在执行任何操作之前务必理解该操作所代表的含义。")
 	fmt.Println("I just want a home. Please do what I say and I will give you a flag")
 	fmt.Println("Make sure I am running on Linux(Unix).")
 	// Check windows
@@ -197,6 +198,7 @@ func GetFlag() error {
 	decrypter := cipher.NewCFBDecrypter(block, iv)
 	decrypter.XORKeyStream(ans, cmsg)
 	fmt.Println(string(ans))
+	fmt.Println("如果您使用逆向工程的方式解出了此题，首先恭喜你获得了 flag，在赛后我们会公布writeup，别忘了来看我们的预期解")
 	return  nil
 }
 
